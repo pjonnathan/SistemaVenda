@@ -1,4 +1,4 @@
-package com.example.repositorys;
+package com.example.sistem.repositorys;
 
 import com.example.models.entity.Estado;
 import org.springframework.data.jpa.repository.JpaRepository;

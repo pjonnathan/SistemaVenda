@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.sistem.controller;
 
 import com.example.models.entity.Estado;
 import com.example.repositorys.EstadoRepository;
