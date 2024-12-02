@@ -13,14 +13,14 @@ public class Estado implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String sigle;
+    private String sigla;
 
     public Estado(){}
 
-    public Estado(Long id, String name, String sigle) {
+    public Estado(Long id, String name, String sigla) {
         this.id = id;
         this.name = name;
-        this.sigle = sigle;
+        this.sigla = sigla;
     }
 
     public Long getId() {
@@ -39,11 +39,11 @@ public class Estado implements Serializable {
         this.name = name;
     }
 
-    public String getSigle() {
-        return sigle;
+    public String getSigla() {
+        return sigla;
     }
 
-    public void setSigle(String sigle) {
-        this.sigle = sigle;
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 }
