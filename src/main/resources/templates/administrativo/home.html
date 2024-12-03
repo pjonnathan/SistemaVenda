@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Home - Sistema de Venda</title>
 </head>
 <body>
@@ -22,7 +24,7 @@
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
+                    <a class="nav-link" href="#"> Home <span class="sr-only">(página atual)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -40,11 +42,23 @@
     <div class="row">
         <div class="col-md-3">
             <ul class="list-group" style="margin-top: 10px;">
-                <li class="list-group-item active">Menu</li>
-                <a href="/cadastro"><li class="list-group-item">Cadastrar Estado</li></a>
-                <a href="#"><li class="list-group-item">Cadastrar Produto</li></a>
-                <a href="#"><li class="list-group-item">Cadastrar Cliente</li></a>
-                <a href="/listaEstado"><li class="list-group-item">Lista Estado</li></a>
+                <li class="list-group-item active"><i class="fa-solid fa-gears"></i> Funcionalidades</li>
+                <a href="/efeturarVenda"><li class="list-group-item">Efetuar Venda</li></a>
+                <a href="/efeturarVenda"><li class="list-group-item">Efetuar entrada de Produto</li></a>
+                <li class="list-group-item active"><i class="fa-solid fa-plus"></i> Cadastros</li>
+                <a href="/cadastrarEstado"><li class="list-group-item">Cadastrar Estado</li></a>
+                <a href="/cadastrarProduto"><li class="list-group-item">Cadastrar Produto</li></a>
+                <a href="/cadastrarCliente"><li class="list-group-item">Cadastrar Cliente</li></a>
+                <a href="/cadastrarFuncionario"><li class="list-group-item">Cadastrar Funcionario</li></a>
+                <a href="/cadastrarFornecedor"><li class="list-group-item">Cadastrar Fornecedor</li></a>
+                <a href="/cadastrarCidade"><li class="list-group-item">Cadastrar Cidade</li></a>
+                <li class="list-group-item active"><i class="fa-solid fa-list-check"></i> Listas</li>
+                <a href="/listaEstado"><li class="list-group-item">Listar Estados</li></a>
+                <a href="/listaCidade"><li class="list-group-item">Listar Cidades</li></a>
+                <a href="/listaCliente"><li class="list-group-item">Listar Clientes</li></a>
+                <a href="/listaFuncionario"><li class="list-group-item">Listar Funcionarios</li></a>
+                <a href="/listaFornecedor"><li class="list-group-item">Listar Fornecedores</li></a>
+                <a href="/listaProduto"><li class="list-group-item">Listar Produtos</li></a>
             </ul>
         </div>
         <div class="col-md-9">

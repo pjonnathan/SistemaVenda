@@ -8,6 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
     <title>Home - Sistema de Venda</title>
 </head>
 <body>
@@ -36,7 +39,7 @@
         </nav>
     </header>
 <main class="container">
-    <table class="table">
+    <table class="table" id="tabela">
         <thead>
             <tr>
             <td>#</td>
@@ -45,28 +48,43 @@
             <td>AÇÃO</td>
             </tr>
         </thead>
-        <tbody th:each="estado: ${listaEstado}">
-            <tr>
+        <tbody>
+            <tr th:each="estado: ${listaEstado}">
                 <td th:text="${estado.id}"></td>
                 <td th:text="${estado.name}"></td>
                 <td th:text="${estado.sigla}"></td>
                 <td colspan="2">
-                    <a th:href="@{/editarEstado/{id}(id=${estado.id})}">Editar</a>
-                    <a th:href="@{/excluirEstado/{id}(id=${estado.id})}">Excluir</a>
+                    <a th:href="@{/editarEstado/{id}(id=${estado.id})}"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+                    <a style="margin-left: 10px; color: red; " th:href="@{/excluirEstado/{id}(id=${estado.id})}"><i class="fa-solid fa-trash-can" style="color: red;"></i>Excluir</a>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <a href="/cadastro"><button type="submit" class="btn btn-primary" style="margin-top: 20px;"><i class="fa-solid fa-plus"></i> Cadastrar</button></a>
+    <a href="/administrativo"><button type="submit" class="btn btn-danger" style="margin-top: 20px;"><i class="fa-solid fa-share"></i> Voltar</button></a>
 </main>
 
 <footer>
 
 </footer>
 
-<!-- JavaScript (Opcional) -->
-<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#tabela').DataTable();
+        } );
+        var table = new DataTable('#tabela', {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/pt-BR.json',
+            },
+        });
+    </script>
 </body>
 </html>

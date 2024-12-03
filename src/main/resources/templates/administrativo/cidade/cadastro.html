@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Home - Sistema de Venda</title>
+    <title>Cadastrar - Cidade</title>
 </head>
 <body>
 
@@ -35,21 +35,22 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
             </form>
         </div>
+    </nav>
 </header>
 
 <main class="container">
-    <form action="/salvarEstado" th:object="${estado}" method="POST">
+    <form action="/salvarCidade" th:object="${cidade}" method="POST">
         <div class="form-group" style="margin-top: 20px;">
             <label for="id">ID</label>
-            <input type="text" class="form-control" readonly="true" id="id" placeholder="Id do Estado" th:field="*{id}">
+            <input type="text" class="form-control" readonly="true" id="id" placeholder="Id da Cidade" th:field="*{id}">
             <label for="name">Nome Estado</label>
-            <input type="text" class="form-control" id="name" placeholder="O Nome do Estado" th:field="*{name}">
-            <label for="sigla">Sigla</label>
-            <input type="text" class="form-control" id="sigla" placeholder="Sigla do Estado" th:field="*{sigla}">
+            <input type="text" class="form-control" id="name" placeholder="O Nome da Cidade" th:field="*{name}">
+            <label for="CEP">CPF</label>
+            <input type="text" class="form-control" id="CEP" placeholder="CEF da Cidade" th:field="*{CEP}">
         </div>
         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
         <a class="btn btn-danger" href="/administrativo"><i class="fa-solid fa-share"></i> Voltar</a>
-        <a class="btn btn-primary" href="/listaEstado"><i class="fa-solid fa-list-ul"></i> Listar</a>
+        <a class="btn btn-primary" href="/listaCidade"><i class="fa-solid fa-list-ul"></i> Listar</a>
     </form>
 </main>
 
