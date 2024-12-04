@@ -16,6 +16,7 @@ public class Cidade implements Serializable {
     private String CEP;
 
     @ManyToOne
+    @JoinColumn(name = "estado_id")
     private Estado estado;
 
     public Cidade(){}

@@ -1,8 +1,11 @@
 package com.example.sistem.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_estado")
@@ -14,6 +17,9 @@ public class Estado implements Serializable {
     private Long id;
     private String name;
     private String sigla;
+
+    @OneToMany(mappedBy = "estado")
+    private List<Cidade> list = new ArrayList<>();
 
     public Estado(){}
 
@@ -46,4 +52,9 @@ public class Estado implements Serializable {
     public void setSigla(String sigla) {
         this.sigla = sigla;
     }
+
+    public List<Cidade> getList() {
+        return list;
+    }
+
 }
