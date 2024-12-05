@@ -1,11 +1,13 @@
 package com.example.sistem.controller;
 
 import com.example.sistem.models.entity.Cidade;
+import com.example.sistem.models.entity.Estado;
 import com.example.sistem.repositorys.CidadeRepository;
 import com.example.sistem.repositorys.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,11 +53,22 @@ public class CidadeController {
     }
 
     @PostMapping("/salvarCidade")
-    public ModelAndView salvar(Cidade cidade, BindingResult result){
-        if (result.hasErrors()){
+    public ModelAndView salvar(@Validated Cidade cidade, BindingResult result) {
+        if (result.hasErrors()) {
             return cadastrar(cidade);
         }
+
+        if (cidade.getEstado() == null || cidade.getEstado().getId() == null) {
+            throw new IllegalArgumentException("Estado não foi selecionado!");
+        }
+
+        // Garante que o estado existe no banco antes de salvar
+        Estado estado = estadoRepository.findById(cidade.getEstado().getId())
+                .orElseThrow(() -> new IllegalArgumentException("Estado inválido!"));
+
+        cidade.setEstado(estado); // Vincula o estado corretamente
         cidadeRepository.saveAndFlush(cidade);
+
         return cadastrar(new Cidade());
     }
 }

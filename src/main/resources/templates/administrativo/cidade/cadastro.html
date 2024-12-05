@@ -48,8 +48,9 @@
             <label for="CEP">CEP</label>
             <input type="text" required class="form-control" id="CEP" placeholder="CEF da Cidade" th:field="*{CEP}">
 
-            <label>Estado</label>
-            <select th:field="*{estado}" class="form-control">
+            <label for="estado">Estado</label>
+            <select id="estado" th:field="*{estado.id}" class="form-control" required>
+                <option value="" disabled selected>Selecione um estado</option>
                 <option th:each="est : ${listaEstado}" th:value="${est.id}" th:text="${est.name}"></option>
             </select>
 
