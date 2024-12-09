@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="https://thymeleaf.org">
 <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"> Home <span class="sr-only">(página atual)</span></a>
+                    <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -35,38 +35,26 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
             </form>
         </div>
+    </nav>
 </header>
 
-<main class="container-fluid">
-
-    <div class="row">
-        <div class="col-md-3">
-            <ul class="list-group" style="margin-top: 10px;">
-                <li class="list-group-item active"><i class="fa-solid fa-gears"></i> Funcionalidades</li>
-                <a href="/efeturarVenda"><li class="list-group-item">Efetuar Venda</li></a>
-                <a href="/efeturarVenda"><li class="list-group-item">Efetuar entrada de Produto</li></a>
-                <li class="list-group-item active"><i class="fa-solid fa-plus"></i> Cadastros</li>
-                <a href="/cadastrarPratileira"><li class="list-group-item">Cadastrar Pratileira</li></a>
-                <a href="/cadastrarProduto"><li class="list-group-item">Cadastrar Produto</li></a>
-                <a href="/cadastrarCliente"><li class="list-group-item">Cadastrar Cliente</li></a>
-                <a href="/cadastrarFuncionario"><li class="list-group-item">Cadastrar Funcionario</li></a>
-                <a href="/cadastrarMovel"><li class="list-group-item">Cadastrar Movel</li></a>
-                <a href="/cadastrarCidade"><li class="list-group-item">Cadastrar Cidade</li></a>
-                <li class="list-group-item active"><i class="fa-solid fa-list-check"></i> Listas</li>
-                <a href="/listaEstado"><li class="list-group-item">Listar Estados</li></a>
-                <a href="/listaCidade"><li class="list-group-item">Listar Cidades</li></a>
-                <a href="/listaCliente"><li class="list-group-item">Listar Clientes</li></a>
-                <a href="/listaFuncionario"><li class="list-group-item">Listar Funcionarios</li></a>
-                <a href="/listaFornecedor"><li class="list-group-item">Listar Fornecedores</li></a>
-                <a href="/listaProduto"><li class="list-group-item">Listar Produtos</li></a>
-            </ul>
+<main class="container">
+    <form action="/salvarPratileria" th:object="${pratileira}" method="POST">
+        <div class="form-group" style="margin-top: 20px;">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" readonly="true" id="id" placeholder="Id da Pratileira" th:field="*{id}">
+            <label for="nome">Nome Pratileira</label>
+            <input type="text" class="form-control" id="nome" placeholder="O Nome da Pratileira" th:field="*{nome}">
+            <label for="movel">Movel</label>
+            <select id="movel" th:field="*{movel.id}" class="form-control" required>
+                <option value="" disabled selected>Selecione um Movel</option>
+                <option th:each="movel : ${listaMovel}" th:value="${movel.id}" th:text="${movel.nome}"></option>
+            </select>
         </div>
-        <div class="col-md-9">
-            <h1>Bem-Vindo ao Sistema</h1>
-            <p>@Feito em 2024 - Pedro Jonnathan</p>
-        </div>
-    </div>
-
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
+        <a class="btn btn-danger" href="/administrativo"><i class="fa-solid fa-share"></i> Voltar</a>
+        <a class="btn btn-primary" href="/listaPratileira"><i class="fa-solid fa-list-ul"></i> Listar</a>
+    </form>
 </main>
 
 <footer>

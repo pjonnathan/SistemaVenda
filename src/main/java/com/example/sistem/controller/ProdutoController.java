@@ -1,6 +1,7 @@
 package com.example.sistem.controller;
 
 import com.example.sistem.models.entity.Produto;
+import com.example.sistem.repositorys.PratileiraRespository;
 import com.example.sistem.repositorys.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +15,14 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository produtoRepository;
 
+    @Autowired
+    private PratileiraRespository pratileiraRespository;
+
     @GetMapping("/cadastrarProduto")
     public ModelAndView cadastro(Produto produto){
         ModelAndView mv = new ModelAndView("administrativo/produto/cadastro");
         mv.addObject("produto", produto);
+        mv.addObject("listaPratileira", pratileiraRespository.findAll());
         return mv;
     }
 

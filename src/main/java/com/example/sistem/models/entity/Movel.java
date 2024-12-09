@@ -1,11 +1,10 @@
 package com.example.sistem.models.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +15,9 @@ public class Movel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
+
+    @OneToMany(mappedBy = "movel")
+    private List<Pratileira> list = new ArrayList<>();
 
     public Movel() {
     }
@@ -51,5 +53,9 @@ public class Movel implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, nome);
+    }
+
+    public List<Pratileira> getList() {
+        return list;
     }
 }

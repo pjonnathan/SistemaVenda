@@ -22,6 +22,13 @@ public class MovelController {
         return mv;
     }
 
+    @GetMapping("/listaMovel")
+    public ModelAndView listar(){
+        ModelAndView mv = new ModelAndView("administrativo/movel/list");
+        mv.addObject("listaMovel", movelRespository.findAll());
+        return mv;
+    }
+
     @PostMapping("/salvarMovel")
     public ModelAndView salvar(Movel movel, BindingResult result){
         if(result.hasErrors()){

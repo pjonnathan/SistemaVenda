@@ -18,14 +18,19 @@ public class Produto implements Serializable {
     private String unidadeMedida;
     private Double estoque;
 
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
+    private Pratileira pratileira;
+
     public Produto(){}
 
-    public Produto(Long id, String nome, String codigoBarra, String unidadeMedida, Double estoque) {
+    public Produto(Long id, String nome, String codigoBarra, String unidadeMedida, Double estoque, Pratileira pratileira) {
         this.id = id;
         this.nome = nome;
         this.codigoBarra = codigoBarra;
         this.unidadeMedida = unidadeMedida;
         this.estoque = estoque;
+        this.pratileira = pratileira;
     }
 
     public Long getId() {
@@ -66,6 +71,14 @@ public class Produto implements Serializable {
 
     public void setEstoque(Double estoque) {
         this.estoque = estoque;
+    }
+
+    public Pratileira getPratileira() {
+        return pratileira;
+    }
+
+    public void setPratileira(Pratileira pratileira) {
+        this.pratileira = pratileira;
     }
 
     @Override
