@@ -51,10 +51,13 @@
             <input type="text" class="form-control" id="unidadeMedida" placeholder="Unidade de Medida do Produto" th:field="*{unidadeMedida}">
             <label for="estoque">Estoque</label>
             <input type="text" class="form-control" id="estoque" placeholder="Quantidade em Estoque" th:field="*{estoque}">
-            <label for="pratileira">Movel</label>
+            <label for="pratileira">Local</label>
             <select id="pratileira" th:field="*{pratileira.id}" class="form-control" required>
-                <option value="" disabled selected>Selecione um Pratileira</option>
-                <option th:each="prat : ${listaPratileira}" th:value="${prat.id}" th:text="${prat.nome}"></option>
+                <option value="" disabled selected>Selecione uma Prateleira</option>
+                <option th:each="prat : ${listaPratileira}"
+                        th:value="${prat.id}"
+                        th:text="${'Pratileira ' + prat.nome + ' - ' + ' Movel ' + prat.movel.nome}">
+                </option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
